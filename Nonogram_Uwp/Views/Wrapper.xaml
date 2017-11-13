@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="Nonogram_Uwp.Views.Wrapper"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nonogram_Uwp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.TopAppBar>
+        <CommandBar ClosedDisplayMode="Minimal" Background="#b3cde0"></CommandBar>
+    </Page.TopAppBar>
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Compact" Background="#b3cde0">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Name="abUndo" Foreground="#03396c"  Icon="Undo" Label="Undo Last Move"/>
+                <AppBarSeparator Foreground="#03396c"/>
+                <AppBarButton Name="Clear" Foreground="#03396c" Icon="Clear" Label="Clear Puzzle"/>
+                <AppBarSeparator Foreground="#03396c"/>
+                <AppBarButton Name="Check" Foreground="#03396c" Icon="Bullets" Label="Check Puzzle"/>
+                <AppBarSeparator Foreground="#03396c"/>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Name="setting" Icon="Setting" Label="Setting"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Frame x:Name="fContent"/>
+    </Grid>
+</Page>
