@@ -5,37 +5,20 @@
     xmlns:local="using:Nonogram_Uwp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" MinHeight="800" MinWidth="800" Height="800"  Width="800">
 
-    <Grid x:Name="grGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="grGrid" Background="#011f4b">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="650"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="650"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <!--<Grid x:Name="grLeft" Grid.Row="1" BorderBrush="#011f4b" BorderThickness="0, 0, 1, 0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-        </Grid>-->
-        <Grid x:Name="GrColor" Grid.Row="0" Grid.Column="0" Background="#011f4b"/>
-        <Frame Name="ControlFrame" Grid.Row="2" Grid.ColumnSpan="2"/>
     </Grid>
 </Page>

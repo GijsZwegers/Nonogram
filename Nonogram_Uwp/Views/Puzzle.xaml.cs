@@ -18,6 +18,7 @@ using Windows.UI;
 using Windows.UI.Popups;
 using Nonogram_Uwp.Classes;
 
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Nonogram_Uwp.Views
@@ -28,16 +29,16 @@ namespace Nonogram_Uwp.Views
     public sealed partial class Puzzle_Page : Page
     {
         //lists voor de items in de grid
-        List<Grid> lsGridMain = new List<Grid>();
-        List<Grid> lsGridLeft = new List<Grid>();
-        List<Grid> lsGridTop = new List<Grid>();
+        List<Rectangle> lsGridMain = new List<Rectangle>();
+        List<Rectangle> lsGridLeft = new List<Rectangle>();
+        List<Rectangle> lsGridTop = new List<Rectangle>();
 
         //grids aanmaken om te gebruiken
         Grid grTop = new Grid();
         Grid grMain = new Grid();
         Grid grLeft = new Grid();
 
-        int iAantalRows = 20;
+        int iAantalRows = 4;
         public Puzzle_Page()
         {
             this.InitializeComponent();
@@ -52,26 +53,33 @@ namespace Nonogram_Uwp.Views
             
             for (int i = 0; i < Aantal; i++)
             {
-                ColumnDefinition c1  = new ColumnDefinition();
-                c1.Width = new GridLength(1, GridUnitType.Star);
-                grTop.ColumnDefinitions.Add(c1);
+                ColumnDefinition c1  = new ColumnDefinition()
+                { 
+                Width = new GridLength(1, GridUnitType.Star)
+                };
+            grTop.ColumnDefinitions.Add(c1);
             }
-            Grid.SetColumn(grTop, 1);
+            Grid.SetColumn(grTop, 2);
+            Grid.SetRow(grTop, 1);
             grGrid.Children.Add(grTop);
             #endregion
 
             #region maingrid
             for (int i = 0; i < Aantal; i++)
             {
-                ColumnDefinition c1 = new ColumnDefinition();
-                c1.Width = new GridLength(1, GridUnitType.Star);
+                ColumnDefinition c1 = new ColumnDefinition()
+                {
+                    Width = new GridLength(1, GridUnitType.Star)
+                };
                 grMain.ColumnDefinitions.Add(c1);
-                RowDefinition r1 = new RowDefinition();
-                r1.Height = new GridLength(1, GridUnitType.Star);
+                RowDefinition r1 = new RowDefinition()
+                {
+                    Height = new GridLength(1, GridUnitType.Star)
+                };
                 grMain.RowDefinitions.Add(r1);
             }
-            Grid.SetColumn(grMain, 1);
-            Grid.SetRow(grMain, 1);
+            Grid.SetColumn(grMain, 2);
+            Grid.SetRow(grMain, 2);
             grGrid.Children.Add(grMain);
             #endregion
             #region leftgrid
@@ -80,11 +88,14 @@ namespace Nonogram_Uwp.Views
 
             for (int i = 0; i < Aantal; i++)
             {
-                RowDefinition r1 = new RowDefinition();
-                r1.Height = new GridLength(1, GridUnitType.Star);
+                RowDefinition r1 = new RowDefinition()
+                {
+                    Height = new GridLength(1, GridUnitType.Star)
+                };
                 grLeft.RowDefinitions.Add(r1);
             }
-            Grid.SetRow(grLeft, 1);
+            Grid.SetColumn(grLeft, 1);
+            Grid.SetRow(grLeft, 2);
             grGrid.Children.Add(grLeft);
             #endregion
         }
@@ -93,22 +104,22 @@ namespace Nonogram_Uwp.Views
         {
             for (int i = 0; i < Aantal; i++)
             {
-                Grid LeftGrid = new Grid
+                Rectangle LeftGrid = new Rectangle
                 {
-                    Background = new SolidColorBrush(Colors.White),
-                    BorderBrush = new SolidColorBrush(Color.FromArgb(255, 179, 205, 224)),
-                    BorderThickness = new Thickness(1)
+                    Fill = new SolidColorBrush(Colors.White),
+                    Stroke = new SolidColorBrush(Color.FromArgb(255, 179, 205, 224)),
+                    StrokeThickness = 1
                 };
                 Grid.SetRow(LeftGrid, i);
                 Grid.SetColumn(LeftGrid, 0);
                 grLeft.Children.Add(LeftGrid);
                 lsGridLeft.Add(LeftGrid);
 
-                Grid TopGrid = new Grid
+                Rectangle TopGrid = new Rectangle
                 {
-                    Background = new SolidColorBrush(Colors.White),
-                    BorderBrush = new SolidColorBrush(Color.FromArgb(255, 179, 205, 224)),
-                    BorderThickness = new Thickness(1)
+                    Fill = new SolidColorBrush(Colors.White),
+                    Stroke = new SolidColorBrush(Color.FromArgb(255, 179, 205, 224)),
+                    StrokeThickness = 1
                 };
                 Grid.SetRow(TopGrid, 0);
                 Grid.SetColumn(TopGrid, i);
@@ -122,11 +133,11 @@ namespace Nonogram_Uwp.Views
                 for (int height = 0; height < Aantal;)
                 {
                    
-                    Grid MainGrid = new Grid
+                    Rectangle MainGrid = new Rectangle
                     {
-                        Background = new SolidColorBrush(Colors.White),
-                        BorderBrush = new SolidColorBrush(Color.FromArgb(255, 179, 205, 224)),
-                        BorderThickness = new Thickness(1)
+                        Fill = new SolidColorBrush(Colors.White),
+                        Stroke = new SolidColorBrush(Color.FromArgb(255, 179, 205, 224)),
+                        StrokeThickness = 1
                     };
                     //Functie die ervoor zorgt dat zodra er op een grad gedrukt word de kleur verandert
                     MainGrid.Tapped += Grid_Tapped;
@@ -142,17 +153,17 @@ namespace Nonogram_Uwp.Views
 
         public void Grid_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            var grid = sender as Grid;
-            SolidColorBrush brush = grid.Background as SolidColorBrush;
+            var grid = sender as Rectangle;
+            SolidColorBrush brush = grid.Fill as SolidColorBrush;
             if (grid != null)
             {
                 if (brush.Color == Colors.Black)
                 {
-                    grid.Background = new SolidColorBrush(Colors.White);
+                    grid.Fill = new SolidColorBrush(Colors.White);
                 }
                 else
                 {
-                    grid.Background = new SolidColorBrush(Colors.Black);
+                    grid.Fill = new SolidColorBrush(Colors.Black);
                 }
 
             }
