@@ -28,10 +28,12 @@ namespace Nonogram_Uwp.Views
     /// </summary>
     public sealed partial class Puzzle_Page : Page
     {
+
         //lists voor de items in de grid
         List<Rectangle> lsGridMain = new List<Rectangle>();
         List<Rectangle> lsGridLeft = new List<Rectangle>();
         List<Rectangle> lsGridTop = new List<Rectangle>();
+
 
         //grids aanmaken om te gebruiken
         Grid grTop = new Grid();
@@ -153,19 +155,19 @@ namespace Nonogram_Uwp.Views
 
         public void Grid_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            var grid = sender as Rectangle;
-            SolidColorBrush brush = grid.Fill as SolidColorBrush;
-            if (grid != null)
+            var rectangle = sender as Rectangle;
+            SolidColorBrush brush = rectangle.Fill as SolidColorBrush;
+            if (rectangle != null)
             {
                 if (brush.Color == Colors.Black)
                 {
-                    grid.Fill = new SolidColorBrush(Colors.White);
+                    rectangle.Fill = new SolidColorBrush(Colors.White);
                 }
                 else
                 {
-                    grid.Fill = new SolidColorBrush(Colors.Black);
+                    rectangle.Fill = new SolidColorBrush(Colors.Black);
                 }
-
+                
             }
         }
     }

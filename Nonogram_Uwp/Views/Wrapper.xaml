@@ -6,21 +6,20 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" MinHeight="1000" MinWidth="1000" Height="800"  Width="800">
-    <Page.TopAppBar>
-        <CommandBar ClosedDisplayMode="Minimal" Background="#b3cde0"></CommandBar>
-    </Page.TopAppBar>
     <Page.BottomAppBar>
         <CommandBar ClosedDisplayMode="Compact" Background="#b3cde0">
             <CommandBar.PrimaryCommands>
-                <AppBarButton Name="abUndo" Foreground="#03396c"  Icon="Undo" Label="Undo Last Move"/>
+                <AppBarButton Name="Undo" Foreground="#03396c"  Icon="Undo" Label="Undo Last Move" Click="Undo_Click"/>
                 <AppBarSeparator Foreground="#03396c"/>
                 <AppBarButton Name="Clear" Foreground="#03396c" Icon="Clear" Label="Clear Puzzle"/>
                 <AppBarSeparator Foreground="#03396c"/>
                 <AppBarButton Name="Check" Foreground="#03396c" Icon="Bullets" Label="Check Puzzle"/>
                 <AppBarSeparator Foreground="#03396c"/>
+                <AppBarButton Name="AddImage" Foreground="#03396c" Icon="NewWindow" Label="Add a new image" Click="AddImage_Click"/>
+                <AppBarSeparator Foreground="#03396c"/>
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
-                <AppBarButton Name="setting" Icon="Setting" Label="Setting"/>
+                <AppBarButton Name="setting" Icon="Setting" Label="Haha koekwaus dit doet nog niks"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
