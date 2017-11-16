@@ -26,7 +26,7 @@ namespace Nonogram_Uwp.Views
     /// </summary>
     public sealed partial class Wrapper : Page
     {
-        public List<Rectangle> lsUndoTappedRectangles = new List<Rectangle>();
+        public static List<Rectangle> lsTappedRectangles = new List<Rectangle>();
 
         public Wrapper()
         {
@@ -38,7 +38,7 @@ namespace Nonogram_Uwp.Views
         {
             if (fContent.Content.GetType() == typeof(Puzzle_Page))
             {
-                fContent.Navigate(typeof(AddPicuturePage));
+                fContent.Navigate(typeof(AddPicturePage));
             }
             else
             {
@@ -46,20 +46,42 @@ namespace Nonogram_Uwp.Views
             }
         }
 
-        public void FillUndoList(Rectangle rtTapped)
+        static public void FillUndoList(Rectangle rtTapped)
         {
-            lsUndoTappedRectangles.Add(rtTapped);
+            lsTappedRectangles.Add(rtTapped);
         }
 
         private void Undo_Click(object sender, RoutedEventArgs e)
         {
-            Rectangle rtLastSet;
-            rtLastSet = lsUndoTappedRectangles[lsUndoTappedRectangles.Count - 1];
-            
-            if (((SolidColorBrush)rtLastSet.Stroke).Color != Colors.White)
+            if (!lsTappedRectangles.Any())
             {
                 
             }
+            else
+            {
+                Rectangle rtLastSet;
+                rtLastSet = lsTappedRectangles[lsTappedRectangles.Count - 1];
+                SolidColorBrush brush = rtLastSet.Fill as SolidColorBrush;
+                if (brush.Color == Colors.Black)
+                {
+                    rtLastSet.Fill = new SolidColorBrush(Colors.White);
+                }
+                else if (brush.Color == Colors.White)
+                {
+                    rtLastSet.Fill = new SolidColorBrush(Colors.Black);
+                }
+                lsTappedRectangles.RemoveAt(lsTappedRectangles.Count - 1);
+            }
+            
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Rectangle rectangle in lsTappedRectangles)
+            {
+                rectangle.Fill = new SolidColorBrush(Colors.White);
+            }
+            lsTappedRectangles.Clear();
         }
     }
 }

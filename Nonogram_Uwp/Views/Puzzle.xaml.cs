@@ -40,14 +40,14 @@ namespace Nonogram_Uwp.Views
         Grid grMain = new Grid();
         Grid grLeft = new Grid();
 
-        int iAantalRows = 4;
+        int iAantalRows;
         public Puzzle_Page()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             FillColumnsWithGrids(iAantalRows);
-            FillGridWithGrids(iAantalRows);
+            FillGridWithRectangles(iAantalRows);
         }
-        private void FillGridWithGrids(int Aantal)
+        private void FillGridWithRectangles(int Aantal)
         {
             #region topgrid
             grTop.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 1, 31, 75));
@@ -167,7 +167,7 @@ namespace Nonogram_Uwp.Views
                 {
                     rectangle.Fill = new SolidColorBrush(Colors.Black);
                 }
-                
+                Views.Wrapper.FillUndoList(rectangle);
             }
         }
     }

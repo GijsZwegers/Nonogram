@@ -25,17 +25,9 @@ namespace Nonogram_Uwp.Classes
             var imageDecoder = await BitmapDecoder.CreateAsync(imagestream.AsRandomAccessStream()); // stream decoderen
             var imagePixelData = await imageDecoder.GetPixelDataAsync(); // informatie uit pixel halen
             var bytes = imagePixelData.DetachPixelData();
-
             var k = (xCoordinate * (int)imageDecoder.PixelWidth + yCoordinate) * 3; // Naar de geselecteerde codrinaten navigeren
+
             return Color.FromArgb(0, bytes[k + 0], bytes[k + 1], bytes[k + 2]); // rood groen en blauw uit de kleuren halen
         }
-
-        public void FillUndoList()
-        {
-            List<Rectangle> lsUndoTappedRectangles = new List<Rectangle>();
-
-        }
-
-
     }
 }

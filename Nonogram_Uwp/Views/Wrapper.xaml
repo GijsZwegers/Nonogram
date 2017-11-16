@@ -11,7 +11,7 @@
             <CommandBar.PrimaryCommands>
                 <AppBarButton Name="Undo" Foreground="#03396c"  Icon="Undo" Label="Undo Last Move" Click="Undo_Click"/>
                 <AppBarSeparator Foreground="#03396c"/>
-                <AppBarButton Name="Clear" Foreground="#03396c" Icon="Clear" Label="Clear Puzzle"/>
+                <AppBarButton Name="Clear" Foreground="#03396c" Icon="Clear" Label="Clear Puzzle" Click="Clear_Click"/>
                 <AppBarSeparator Foreground="#03396c"/>
                 <AppBarButton Name="Check" Foreground="#03396c" Icon="Bullets" Label="Check Puzzle"/>
                 <AppBarSeparator Foreground="#03396c"/>
